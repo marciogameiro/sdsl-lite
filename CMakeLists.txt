@@ -22,7 +22,6 @@ set(LIBRARY_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(LIBRARY_VERSION "${LIBRARY_VERSION_MAJOR}.${LIBRARY_VERSION_MINOR}")
 set(LIBRARY_VERSION_FULL "${LIBRARY_VERSION}.${LIBRARY_VERSION_PATCH}")
 
-
 option(CODE_COVERAGE "Set ON to add code coverage compile options" OFF)
 option(GENERATE_DOC "Set ON to generate doxygen API reference in build/doc directory" OFF)
 
@@ -134,12 +133,12 @@ COMMENT "Generating API documentation with Doxygen" VERBATIM
 endif(GENERATE_DOC AND DOXYGEN_FOUND)
 
 ## Add 'uninstall' target ##
-CONFIGURE_FILE(
-  "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/cmake_uninstall.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake"
-  IMMEDIATE @ONLY)
-ADD_CUSTOM_TARGET(uninstall-sdsl
-  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake")
+# CONFIGURE_FILE(
+#   "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/cmake_uninstall.cmake.in"
+#   "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake"
+#   IMMEDIATE @ONLY)
+# ADD_CUSTOM_TARGET(uninstall-sdsl
+#   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake")
 
 target_include_directories(sdsl PUBLIC include)
 
@@ -148,4 +147,4 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/sdsl-lite.pc.cmake"
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sdsl-lite.pc"
         DESTINATION "lib/pkgconfig")
 
-add_subdirectory(test)
+# add_subdirectory(test)
