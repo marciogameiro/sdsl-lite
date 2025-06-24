@@ -22,7 +22,6 @@ if errorlevel 1 (
     exit /b %errorlevel% 
 )
 
-
 rem TODO clean-up build directory
 
 cmake -DCMAKE_INSTALL_PREFIX="${SDSL_INSTALL_PREFIX}" -G"Visual Studio 17 2022" ..
@@ -31,4 +30,4 @@ if errorlevel 1 (
     exit /b %errorlevel%
 )
 
-msbuild -t:sdsl -p:configuration=Release sdsl.sln
+msbuild -t:sdsl -p:configuration=Release -p:RuntimeLibrary=MultiThreadedDLL sdsl.sln
